@@ -1,0 +1,39 @@
+@inject ISnackbar Snackbar
+
+<MudDialog>
+    <DialogContent>
+        <MudText>
+            Press "Ok" to REMOVE this Item to a Cart
+        </MudText>
+        <MudText>
+            Press "Cancel" to quite this Dialogt
+        </MudText>
+        
+    </DialogContent>
+    <DialogActions>
+        <MudButton OnClick="Cancel">Cancel</MudButton>
+        <MudButton Color="Color.Primary" OnClick="Submit">Ok</MudButton>
+    </DialogActions>
+</MudDialog>
+
+@code {
+
+    [CascadingParameter] 
+    MudDialogInstance MudDialog { get; set; }
+    
+    void Submit()
+    {
+        MudDialog.Close(DialogResult.Ok(true));
+        Snackbar.Configuration.PositionClass = Defaults.Classes.Position.BottomLeft;
+        Snackbar.Configuration.ShowCloseIcon = true;
+        Snackbar.Configuration.VisibleStateDuration = 1700;
+        Snackbar.Configuration.HideTransitionDuration  = 500;
+        Snackbar.Configuration.ShowTransitionDuration   = 500;
+
+        string message = "Item removed successfully";
+        Snackbar.Add(message, Severity.Success);
+    } 
+    void Cancel() => MudDialog.Cancel();
+
+  
+}

@@ -1,0 +1,61 @@
+﻿@inherits LayoutComponentBase
+@inject IDialogService DialogService
+
+
+
+
+@* <MudThemeProvider @bind-IsDarkMode="@themeOn"/> *@
+<MudThemeProvider Theme="@_currentTheme"/>
+<MudDialogProvider />
+<MudSnackbarProvider />
+
+<MudLayout class="p-8">
+    <MudAppBar Elevation="1" >
+        <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="Color.Inherit" Edge="Edge.Start" OnClick="@((e) => DrawerToggle())" />
+        <MudText Typo="Typo.h5" Class="ml-3">Application</MudText>
+        <MudSpacer />
+        <MudSpacer />
+
+        <Cart 
+            SetGoodCount="@SetCount"
+            ItemCount = "@count"
+        />
+        
+        <MudAvatar Color="Color.Secondary" Class="ml-6">YV</MudAvatar>
+        @* <MudIconButton Icon="@Icons.Material.Filled.MoreVert" Color="Color.Inherit" Edge="Edge.End" /> *@
+        <MudAvatar Color="Color.Secondary" Class="ml-2">
+            <MudIconButton Icon="@themIcon"  OnClick="ChangeThemeAsync"/>
+        </MudAvatar>
+    </MudAppBar>
+    <MudDrawer @bind-Open="_drawerOpen" ClipMode="DrawerClipMode.Always"  >
+        <NavMenu/>
+    </MudDrawer>
+    <MudMainContent Class="mt-4 pl-12 pr-12">
+        @Body
+    </MudMainContent>
+</MudLayout>
+
+
+@code {
+
+    private int count = 0;
+    private void SetCount()
+    {
+        count++;
+    }
+
+
+
+
+
+    bool themeOn = true;
+
+    @* bool _drawerOpen = true;
+
+    void DrawerToggle()
+    {
+        _drawerOpen = !_drawerOpen;
+    }
+
+    MudTheme *@
+}

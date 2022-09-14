@@ -1,0 +1,17 @@
+<MudItem Class="mt-2">
+  <MudIcon  Icon="@Icons.Filled.ShoppingCartCheckout"  Class="cursor-pointer" Style="font-size: 2rem;"/>
+  <MudChip Class="mt-n5">@ItemCount</MudChip>
+</MudItem>
+ 
+@code {
+
+  [Parameter]
+  public int ItemCount { get; set; } = 0;
+
+  [Parameter]
+  public EventCallback<int> SetGoodCount { get; set; }
+
+  
+    
+
+}

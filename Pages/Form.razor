@@ -1,0 +1,143 @@
+﻿@page "/form"
+@using mudblazorserver1.Data
+@using System.ComponentModel.DataAnnotations
+
+<MudThemeProvider @bind-IsDarkMode="@_isDarkMode" Theme="MyCustomTheme"/>
+
+<PageTitle>Form</PageTitle>
+<MudText Typo="Typo.h6">Form</MudText>
+
+<EditForm Model="@model" OnValidSubmit="OnValidSubmit">
+  <DataAnnotationsValidator/>
+  <MudGrid>
+      <MudItem xs="12" sm="7">
+          <MudCard>
+              <MudCardContent>
+                  <MudSwitch @bind-Checked="@_isDarkMode" Color="Color.Primary" Class="ma-4" T="bool" Label="Mode"/>
+
+                  <MudTextField Label="First name" HelperText="Max. 8 characters"
+                                @bind-Value="model.Username" For="@(() => model.Username)"/>
+                  <MudTextField Label="Email" Class="mt-3"
+                                @bind-Value="model.Email" For="@(() => model.Email)"/>
+                  <MudTextField Label="Password" HelperText="Choose a strong password" Class="mt-3"
+                                @bind-Value="model.Password" For="@(() => model.Password)" InputType="InputType.Password"/>
+                  <MudTextField Label="Password" HelperText="Repeat the password" Class="mt-3"
+                                @bind-Value="model.Password2" For="@(() => model.Password2)" InputType="InputType.Password"/>
+              </MudCardContent>
+              <MudCardActions>
+                  <MudButton ButtonType="ButtonType.Submit" Variant="Variant.Filled" Color="Color.Primary" Class="ml-auto">Register</MudButton>
+              </MudCardActions>
+          </MudCard>
+      </MudItem>
+      <MudItem xs="12" sm="5">
+          <MudPaper Class="pa-4 mud-height-full">
+              <MudText Typo="Typo.subtitle2">Validation Summary</MudText>
+              @if (success)
+              {
+                  <MudText Color="Color.Success">Success</MudText>
+              }
+              else
+              {
+                  <MudText Color="@Color.Error">
+                      <ValidationSummary />
+                  </MudText>
+              }
+          </MudPaper>
+      </MudItem>
+      <MudItem xs="12">
+          <MudText Typo="Typo.body2" Align="Align.Center">
+              Fill out the form correctly to see the success message.
+          </MudText>
+      </MudItem>
+  </MudGrid>
+</EditForm>
+
+
+<MudTable Items="@persons" Hover="true" >
+  <ToolBarContent>
+    <MudText Typo="Typo.h6">Example Table</MudText>
+  </ToolBarContent>
+  <HeaderContent >
+      <MudTh Class="mud-theme-primary">Username</MudTh>
+      <MudTh Class="mud-theme-primary">Email</MudTh>
+      <MudTh Class="mud-theme-primary">Password</MudTh>
+      <MudTh Class="mud-theme-primary"></MudTh>
+      @* <MudTh Class="mud-theme-primary" >Username</MudTh>
+      <MudTh Class="mud-theme-secondary">Email</MudTh>
+      <MudTh Class="mud-theme-primary">Password</MudTh>
+      <MudTh Class="mud-theme-primary"></MudTh> *@
+    </HeaderContent>
+  <RowTemplate>
+      <MudTd DataLabel="id">@context.Username</MudTd>
+      <MudTd DataLabel="title">@context.Email</MudTd>
+      <MudTd DataLabel="val1">@context.Password</MudTd>
+      <MudTd DataLabel="val1" Class="d-flex flex-row-reverse">
+        <MudTooltip Text="Delete">
+          <MudIconButton Icon="@Icons.Material.Filled.Delete"/>
+        </MudTooltip>
+          @* <MudIconButton Icon="@Icons.Material.Filled.Delete"
+            @onclick="@(()=> RemoveUser(persons.))"
+          />
+        </MudTooltip> *@
+      </MudTd>
+      
+  </RowTemplate>
+</MudTable>
+
+
+
+
+
+@code {
+private bool _isDarkMode;
+MudCard mc = new();
+MudTheme MyCustomTheme = new MudTheme()
+{
+  Palette = new Palette()
+  {
+      Primary = Colors.Cyan.Default,
+      Secondary = Colors.Cyan.Accent4,
+      AppbarBackground = Colors.BlueGrey.Darken3,
+      DrawerBackground = Colors.BlueGrey.Darken4,
+      Background = Colors.BlueGrey.Lighten5,
+      TableHover = Colors.LightBlue.Lighten4,
+      TextPrimary = Colors.Cyan.Darken1,
+      TableStriped = Colors.Grey.Lighten2,
+      TableLines = Colors.Grey.Lighten2,
+      @* Background = Colors.Red.Default, *@
+  },
+  PaletteDark = new Palette()
+  {
+      Primary = Colors.Cyan.Accent4
+  },
+
+};
+
+  RegisterAccountForm model = new RegisterAccountForm();
+  List<RegisterAccountForm> persons = new List<RegisterAccountForm>();
+  bool success;
+
+  private void OnValidSubmit()
+  {
+    success = true;
+    persons.Add(model);
+    model = new RegisterAccountForm();
+    StateHasChanged();
+  }
+
+  private void RemoveUser(int i)
+  {
+      persons.RemoveAt(i);
+  }
+
+  @* private void RemoveUser(List<RegisterAccountForm> persons)
+  {
+    for (int i = 0; i < persons.Count; i++)
+    {
+      persons.RemoveAt(i);
+    }
+  } *@
+
+
+
+}

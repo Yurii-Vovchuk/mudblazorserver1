@@ -1,0 +1,60 @@
+﻿@page "/table"
+@using mudblazorserver1.Data
+@using System.ComponentModel.DataAnnotations
+@inject ISnackbar Snackbar
+
+<PageTitle>Table</PageTitle>
+
+<MudTable Items="@TestList" Hover="true" Filter="new Func<TestModel, bool>(FilterCycleCheck)" SortLabel="Sort By">
+  <ToolBarContent>
+    <MudText Typo="Typo.h6">Example Table</MudText>
+    <MudSpacer/>
+    <MudTextField  @bind-Value="Search" Label="Search" Variant="Variant.Outlined" Adornment="Adornment.End" AdornmentIcon="@Icons.Filled.Search" AdornmentColor="Color.Primary" />
+  </ToolBarContent>
+    <HeaderContent>
+        <MudTh>ID</MudTh>
+        <MudTh>TITLE</MudTh>
+        <MudTh><MudTableSortLabel SortBy="new Func<TestModel, object>(x=>x.Title)">VAL 1</MudTableSortLabel></MudTh>
+        <MudTh><MudTableSortLabel SortBy="new Func<TestModel, object>(x=>x.Title)">VAL 2</MudTableSortLabel></MudTh>
+     </HeaderContent>
+    <RowTemplate>
+        <MudTd DataLabel="id">@context.Id</MudTd>
+        <MudTd DataLabel="title">@context.Title</MudTd>
+        <MudTd DataLabel="val1">@context.Val1</MudTd>
+        <MudTd DataLabel="val2">@context.Val2</MudTd>
+    </RowTemplate>
+    <PagerContent>
+        <MudTablePager PageSizeOptions="new int[]{5, 10, 20}" />
+    </PagerContent>
+</MudTable>
+
+@code {
+  public string Search { get; set;} = "";
+  List<TestModel> TestList = new List<TestModel>();
+
+    private bool FilterCycleCheck(TestModel item)
+    {
+      if(item.Title.Contains(Search))
+        return true;
+      return false;
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+      var rng = new Random();
+      for (int i = 0; i < 20; i++)
+      {
+        TestList.Add(
+          new TestModel
+          {
+            Id=Guid.NewGuid().ToString(),
+            Title="Test "+(i+1).ToString(),
+            Val1=rng.Next(1, 101).ToString(), 
+            Val2=rng.Next(1000, 100000).ToString() 
+          }
+        );
+        
+      }
+    }
+  
+}

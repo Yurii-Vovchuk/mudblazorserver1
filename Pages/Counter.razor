@@ -1,0 +1,41 @@
+﻿@page "/counter"
+@inject IDialogService DialogService
+
+
+<PageTitle>Counter</PageTitle>
+
+<MudText Typo="Typo.h3" GutterBottom="true">Counter</MudText>
+<MudText Class="mb-4">Current count: @currentCount</MudText>
+<MudButton Color="Color.Primary" Variant="Variant.Filled" @onclick="IncrementCount">Increment</MudButton>
+<MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="Confirm">Dialog</MudButton>
+
+<br>
+<br>
+<br>
+<FormComponent/>
+@code {
+    [Parameter]
+    public int currentCount { get; set; } = 0;
+
+
+    private async Task Confirm()
+    {
+        var parameters = new DialogParameters();
+        parameters.Add("ContentText", "Do you want to confirm?");
+        parameters.Add("ButtonText", "Yes");
+
+        var dialogresult = DialogService.Show<DialogConfirm> ("Confirm", parameters);
+        var result = await dialogresult.Result;
+        if (!result.Cancelled && bool.TryParse(result.Data.ToString(), out bool resultbool)) 
+            IncrementCount();
+
+
+        
+    }
+
+    public void IncrementCount()
+    {
+        currentCount++;
+        @* SetCurrentCount.Invoke(currentCount); *@
+    }
+}

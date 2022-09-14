@@ -1,0 +1,66 @@
+@inject ISnackbar Snackbar
+
+<MudDialog>
+    <DialogContent>
+        @* <AddGoodsForm/> *@
+        <EditForm Model="@model" OnValidSubmit="OnValidSubmit">
+            <DataAnnotationsValidator/>
+            <MudGrid>
+                <MudItem >
+                    <MudTextField Label="Title" HelperText="Max. 8 characters"
+                        @bind-Value="model.Title" For="@(() => model.Title)"/>
+
+                    <MudTextField T="string" Label="Description" Variant="Variant.Outlined" Placeholder="Description..." Lines="3" 
+                        @bind-Value="model.Text" For="@(() => model.Text)"/>
+
+                    <MudRating MaxValue="5"/>
+                </MudItem>
+            </MudGrid>
+        </EditForm>
+         <MudItem>
+           
+        </MudItem>
+    </DialogContent>
+    <DialogActions>
+        <MudButton OnClick="Cancel">Cancel</MudButton>
+        <MudButton ButtonType="ButtonType.Button" Color="Color.Primary" OnClick="Submit">Ok</MudButton>
+    </DialogActions>
+   
+
+
+</MudDialog>
+
+@code {
+
+    [CascadingParameter] 
+    MudDialogInstance MudDialog { get; set; }
+
+    CardModel model = new CardModel();
+    [Parameter]
+    public List<CardModel> cards { get; set; }
+    bool success;
+
+    private void OnValidSubmit()
+    {
+        success = true;
+        cards.Add(model);
+        model = new CardModel();
+        StateHasChanged();
+    }
+    
+    void Submit()
+    {
+        MudDialog.Close(DialogResult.Ok(true));
+        Snackbar.Configuration.PositionClass = Defaults.Classes.Position.BottomLeft;
+        Snackbar.Configuration.ShowCloseIcon = true;
+        Snackbar.Configuration.VisibleStateDuration = 1700;
+        Snackbar.Configuration.HideTransitionDuration  = 500;
+        Snackbar.Configuration.ShowTransitionDuration   = 500;
+
+        string message = "Item added sucsessfully";
+        Snackbar.Add(message, Severity.Success);
+    } 
+    void Cancel() => MudDialog.Cancel();
+
+  
+}
