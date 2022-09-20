@@ -5,7 +5,7 @@
 
 <PageTitle>Table</PageTitle>
 
-<MudTable Items="@TestList" Hover="true" Filter="new Func<TestModel, bool>(FilterCycleCheck)" SortLabel="Sort By">
+<MudTable Items="@TestList" Hover="true" Filter="new Func<TestModel, bool>(FilterFunc)" SortLabel="Sort By">
   <ToolBarContent>
     <MudText Typo="Typo.h6">Example Table</MudText>
     <MudSpacer/>
@@ -32,9 +32,15 @@
   public string Search { get; set;} = "";
   List<TestModel> TestList = new List<TestModel>();
 
-    private bool FilterCycleCheck(TestModel item)
+    private bool FilterFunc(TestModel item)
     {
       if(item.Title.Contains(Search))
+        return true;
+      if(item.Val1.Contains(Search))
+        return true;
+      if(item.Val2.Contains(Search))
+        return true;
+      if(item.Id.Contains(Search))
         return true;
       return false;
     }

@@ -12,16 +12,12 @@ StaticWebAssetsLoader.UseStaticWebAssets(builder.Environment, builder.Configurat
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
 builder.Services.AddSingleton<WeatherForecastService>();
-// builder.Services.AddBlazoredLocalStorage(config =>
-// {
-//     config.JsonSerializerOptions.DictionaryKeyPolicy = JsonNamingPolicy.CamelCase;
-//     config.JsonSerializerOptions.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull;
-//     config.JsonSerializerOptions.IgnoreReadOnlyProperties = true;
-//     config.JsonSerializerOptions.PropertyNameCaseInsensitive = true;
-//     config.JsonSerializerOptions.PropertyNamingPolicy = JsonNamingPolicy.CamelCase;
-//     config.JsonSerializerOptions.ReadCommentHandling = JsonCommentHandling.Skip;
-//     config.JsonSerializerOptions.WriteIndented = false;
-// });
+// builder.Services.AddSingleton<_RandomService>();
+// builder.Services.AddTransient<_RandomService>();
+builder.Services.AddScoped<_RandomService>();
+builder.Services.AddScoped<CounterModel>();
+
+
 builder.Services.AddMudServices();
 
 var app = builder.Build();

@@ -19,16 +19,12 @@ build_property._RazorSourceGeneratorDebug =
 build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Yurii.Vovchuk/GitLocal/mudblazorserver1/Pages/Components/AddGoodsForm.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29tcG9uZW50c1xBZGRHb29kc0Zvcm0ucmF6b3I=
-build_metadata.AdditionalFiles.CssScope = 
-
 [C:/Yurii.Vovchuk/GitLocal/mudblazorserver1/Pages/Components/Cart.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29tcG9uZW50c1xDYXJ0LnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Yurii.Vovchuk/GitLocal/mudblazorserver1/Pages/Components/DialogAddItem.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29tcG9uZW50c1xEaWFsb2dBZGRJdGVtLnJhem9y
+[C:/Yurii.Vovchuk/GitLocal/mudblazorserver1/Pages/Components/ChildComponent.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29tcG9uZW50c1xDaGlsZENvbXBvbmVudC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Yurii.Vovchuk/GitLocal/mudblazorserver1/Pages/Components/DialogConfirm.razor]
@@ -41,6 +37,14 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Yurii.Vovchuk/GitLocal/mudblazorserver1/Pages/Components/FormComponent.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29tcG9uZW50c1xGb3JtQ29tcG9uZW50LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Yurii.Vovchuk/GitLocal/mudblazorserver1/Pages/Components/ParentComponent.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29tcG9uZW50c1xQYXJlbnRDb21wb25lbnQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Yurii.Vovchuk/GitLocal/mudblazorserver1/Pages/Components/Range.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29tcG9uZW50c1xSYW5nZS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Yurii.Vovchuk/GitLocal/mudblazorserver1/Pages/Counter.razor]
@@ -83,6 +87,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = X0ltcG9ydHMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Yurii.Vovchuk/GitLocal/mudblazorserver1/Pages/Components/DialogAddItem.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29tcG9uZW50c1xEaWFsb2dBZGRJdGVtLnJhem9y
+build_metadata.AdditionalFiles.CssScope = b-7slf4q4bg6
+
 [C:/Yurii.Vovchuk/GitLocal/mudblazorserver1/Pages/Components/Goods.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29tcG9uZW50c1xHb29kcy5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = b-rer0zom9lj
@@ -90,6 +98,10 @@ build_metadata.AdditionalFiles.CssScope = b-rer0zom9lj
 [C:/Yurii.Vovchuk/GitLocal/mudblazorserver1/Pages/StyleTest.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU3R5bGVUZXN0LnJhem9y
 build_metadata.AdditionalFiles.CssScope = b-ua2bckforu
+
+[C:/Yurii.Vovchuk/GitLocal/mudblazorserver1/Pages/Text.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVGV4dC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = b-phh5fidvi6
 
 [C:/Yurii.Vovchuk/GitLocal/mudblazorserver1/Pages/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXJyb3IuY3NodG1s

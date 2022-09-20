@@ -1,66 +1,68 @@
 @inject ISnackbar Snackbar
+@using System.ComponentModel.DataAnnotations
 
-<MudDialog>
+<MudDialog style="width: 100%" Class="pa-3">
     <DialogContent>
-        @* <AddGoodsForm/> *@
-        <EditForm Model="@model" OnValidSubmit="OnValidSubmit">
+        <EditForm Model="@model" OnValidSubmit="Submit">
             <DataAnnotationsValidator/>
             <MudGrid>
-                <MudItem >
-                    <MudTextField Label="Title" HelperText="Max. 8 characters"
-                        @bind-Value="model.Title" For="@(() => model.Title)"/>
-
-                    <MudTextField T="string" Label="Description" Variant="Variant.Outlined" Placeholder="Description..." Lines="3" 
-                        @bind-Value="model.Text" For="@(() => model.Text)"/>
-
-                    <MudRating MaxValue="5"/>
-                </MudItem>
+                <MudContainer MaxWidth="MaxWidth.Large" Class="pa-0">
+                    <MudTextField Label="Title" HelperText="Max. 8 characters"  
+                        @bind-Value="model.Title" 
+                        @oninput="@(()=>ActivateButton())"
+                        For="@(() => model.Title)"/>
+                    <MudTextField T="string" Label="Description" Class="mt-4" Variant="Variant.Outlined" Lines="5" 
+                        @bind-Value="model.Text" 
+                        @oninput="@(()=>ActivateButton())"
+                        For="@(() => model.Text)"/>
+                    <MudRating MaxValue="5" @bind-SelectedValue="model.Range" Class="mt-4"/>
+                </MudContainer>
             </MudGrid>
         </EditForm>
-         <MudItem>
-           
-        </MudItem>
     </DialogContent>
     <DialogActions>
         <MudButton OnClick="Cancel">Cancel</MudButton>
-        <MudButton ButtonType="ButtonType.Button" Color="Color.Primary" OnClick="Submit">Ok</MudButton>
+        <MudButton 
+            Variant="Variant.Text"
+            Disabled=@(!ActivateButton())
+            Color="Color.Primary" 
+            OnClick="Submit"
+            >Add</MudButton>
     </DialogActions>
-   
-
-
 </MudDialog>
 
-@code {
 
+@code {
     [CascadingParameter] 
     MudDialogInstance MudDialog { get; set; }
-
     CardModel model = new CardModel();
-    [Parameter]
-    public List<CardModel> cards { get; set; }
-    bool success;
 
-    private void OnValidSubmit()
-    {
-        success = true;
-        cards.Add(model);
-        model = new CardModel();
-        StateHasChanged();
-    }
     
+    private bool ActivateButton()
+    {
+        return (model.Title != "" && model.Title.Length <= 8) && model.Text != "";
+       
+    } 
+
+
     void Submit()
     {
-        MudDialog.Close(DialogResult.Ok(true));
+        MudDialog.Close(DialogResult.Ok(model));
+        model = new CardModel();
+
         Snackbar.Configuration.PositionClass = Defaults.Classes.Position.BottomLeft;
         Snackbar.Configuration.ShowCloseIcon = true;
         Snackbar.Configuration.VisibleStateDuration = 1700;
         Snackbar.Configuration.HideTransitionDuration  = 500;
         Snackbar.Configuration.ShowTransitionDuration   = 500;
-
         string message = "Item added sucsessfully";
         Snackbar.Add(message, Severity.Success);
     } 
     void Cancel() => MudDialog.Cancel();
 
-  
+  protected override void OnInitialized()
+  {
+    model.Title ="";
+    model.Text = "";
+  }
 }

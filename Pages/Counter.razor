@@ -1,13 +1,15 @@
 ﻿@page "/counter"
 @inject IDialogService DialogService
+@inject CounterModel CounterModel
 
 
 <PageTitle>Counter</PageTitle>
 
 <MudText Typo="Typo.h3" GutterBottom="true">Counter</MudText>
 <MudText Class="mb-4">Current count: @currentCount</MudText>
+<MudButton Color="Color.Primary" Variant="Variant.Filled" @onclick="DecrementCount">Decrement</MudButton>
 <MudButton Color="Color.Primary" Variant="Variant.Filled" @onclick="IncrementCount">Increment</MudButton>
-<MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="Confirm">Dialog</MudButton>
+@* <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="Confirm">Dialog</MudButton> *@
 
 <br>
 <br>
@@ -28,14 +30,21 @@
         var result = await dialogresult.Result;
         if (!result.Cancelled && bool.TryParse(result.Data.ToString(), out bool resultbool)) 
             IncrementCount();
-
-
-        
     }
 
+
+    public void SetCount(int c)
+    {
+        currentCount += c;
+    }
     public void IncrementCount()
     {
-        currentCount++;
-        @* SetCurrentCount.Invoke(currentCount); *@
+        SetCount(1);
+    }
+    public void DecrementCount()
+    {
+        SetCount(-1);   
     }
 }
+
+

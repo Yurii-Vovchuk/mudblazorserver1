@@ -1,85 +1,64 @@
 @inject IDialogService DialogService
 
 
-<MudItem lg="4" Class="d-flex flex-grow-1">
-  <MudPaper Elevation="2" Class="pa-5 d-flex flex-column justify-space-between flex-grow-1" MinWidth="270px">
+<MudItem lg="4" Class="d-flex flex-grow-1 ">
+  <MudPaper Elevation="2" Class="bg-animation pa-5 d-flex flex-column justify-space-between flex-grow-1" MinWidth="320px">
       <MudItem>
         <MudItem Class="d-flex justify-space-between align-center">
-          <MudText Typo="Typo.h4" GutterBottom="true">@Title</MudText> 
+          <MudText Typo="Typo.h4" GutterBottom="true">@Card.Title</MudText> 
           <MudSpacer />
-          <MudChip Class="" Size="Size.Small">@_itemCount</MudChip>
+          <MudChip Class="" Size="Size.Small">@Card.Counter</MudChip>
           <MudSwitch @bind-Checked="@IsChecked" Color="Color.Success" Class="mr-n3 ml-2" />
         </MudItem>
-        <MudItem Class="mb-5">@Text</MudItem>
+        <MudItem Class="mb-5">@Card.Text</MudItem>
       </MudItem>
-      <MudItem Class="d-flex justify-space-between align-end "> 
-        <MudRating SelectedValue="@Range" MaxValue="5" Disabled="@(!IsChecked ? true : false)"/>
+      <MudItem Class="d-flex justify-space-between align-end flex-wrap"> 
+        <MudRating SelectedValue="@Card.Range" MaxValue="5" Disabled="@(!IsChecked ? true : false)"/>
         <MudSpacer />
-        <MudButtonGroup Variant="Variant.Outlined">
-          <MudButton Color="Color.Primary" Variant="Variant.Outlined" @onclick="(()=>Decrease())">
+        <MudButtonGroup Variant="Variant.Outlined" >
+          <MudButton Color="Color.Primary" Variant="Variant.Outlined" @onclick="(()=>Decrement())">
             <MudIcon Icon="@Icons.Filled.Remove"/>
           </MudButton>
-          <MudButton Color="Color.Warning" Variant="Variant.Outlined" @onclick="(()=>Increase())">
+          <MudButton Color="Color.Warning" Variant="Variant.Outlined" @onclick="(()=>Increment())">
             <MudIcon Icon="@Icons.Filled.Add"/>
           </MudButton>
         </MudButtonGroup>
-        <MudButton Class="ml-2" Variant="Variant.Filled" DisableElevation="true" Color="Color.Success" @onclick="(()=>Add())">Add</MudButton>
         <MudButton Class="ml-2" Variant="Variant.Filled" DisableElevation="true" Color="Color.Primary" @onclick="(()=>Remove())">Remove</MudButton>
       </MudItem>
   </MudPaper>
 </MudItem>
 
 
+
 @code
 {
-  [Parameter]
-  public int Id { get; set; }
-  [Parameter]
-  public string Title { get; set; }
-  [Parameter]
-  public string Text { get; set; }
-  [Parameter]
-  public int Range { get; set; }
-  [Parameter]
+  [Parameter] 
   public bool IsChecked { get; set; }
   [Parameter]
-  public EventCallback<bool> SetItemCount { get; set; }
+  public EventCallback<Guid> RemoveGoods { get; set; }
   [Parameter]
-  public EventCallback<int> RemoveGoods { get; set; }
+  public EventCallback<int> ChangeGoodsCount { get; set; }
+  
   [Parameter]
-  public EventCallback<int> RemoveGoodsCount { get; set; }
-  private int _itemCount = 0;
-  public bool IsIncreased { get; set; }
+  public CardModel Card { get; set; }
 
-  private async Task Increase()
+
+  private Task ChangeCount(int count)
   {
-    IsIncreased = true;
-    _itemCount++;
-    await SetItemCount.InvokeAsync(IsIncreased);
-  }
-  private async Task Decrease()
-  {
-    if(_itemCount > 0)
-    {
-      IsIncreased = false;
-      _itemCount--;
-      await SetItemCount.InvokeAsync(IsIncreased);
-    }
-    else 
-      _itemCount = 0;
+    Card.Counter += count;
+    return ChangeGoodsCount.InvokeAsync(count);
   }
 
-  private async Task Add()
+  private async Task Increment() => ChangeCount(1);
+
+
+  private async Task Decrement()
   {
-    string header = "Add new Item";
-    var options = new DialogOptions { CloseOnEscapeKey = true };
-    var dialogresult = DialogService.Show<DialogAddItem>(header, options);
-    var result = await dialogresult.Result;
-    if(!result.Cancelled)
-    {
-      //...
-    }
+    if(Card.Counter > 0)
+      await ChangeCount(-1);
   }
+
+  
   private async Task Remove()
   {
     string header = "Remove This Item?";
@@ -88,8 +67,8 @@
     var result = await dialogresult.Result;
     if(!result.Cancelled)
     {
-      await RemoveGoods.InvokeAsync(Id);
-      await RemoveGoodsCount.InvokeAsync(_itemCount);
+      await RemoveGoods.InvokeAsync(Card.Id);
+      await ChangeCount(-Card.Counter);
     }
   }
 

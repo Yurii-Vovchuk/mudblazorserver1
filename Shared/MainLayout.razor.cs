@@ -1,15 +1,11 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Components;
-// using Blazored.LocalStorage;
 using MudBlazor;
 
 namespace mudblazorserver1.Shared
 {
     public partial class MainLayout
     {
-        // [Inject]
-        // public ILocalStorageService LocalStorage { get; set; }
-
         bool _drawerOpen = true;
         private string _themName = "light";
         private string themIcon = Icons.Filled.BrightnessLow;
@@ -34,7 +30,7 @@ namespace mudblazorserver1.Shared
                 DrawerText = "#FFFFFF",
                 Surface = "#FFFFFF",
                 ActionDefault = "#1F3143", // Radio, Checkbox...
-                ActionDisabled = "#FFFFFF", // text disabl
+                // ActionDisabled = "#FFFFFF", // text disabl
                 TextDisabled = "#DFE3E4",
                 InfoContrastText = "#8E4CA9",
             }
@@ -53,7 +49,7 @@ namespace mudblazorserver1.Shared
                 DrawerText = "#37474F",
                 Surface = "#FFFFFF",
                 ActionDefault = "#1F3143", // Radio, Checkbox...
-                ActionDisabled = "#FFFFFF", // text disabl
+                // ActionDisabled = "#FFFFFF", // text disabl
                 TextDisabled = "#DFE3E4",
                 InfoContrastText = "#8E4CA9",
             }
@@ -77,10 +73,10 @@ namespace mudblazorserver1.Shared
 
         }
 
-        // protected override async Task OnInitializedAsync()
-        // {
-        //     _currentTheme = _lightTheme;
-        // }
+        protected override async Task OnInitializedAsync()
+        {
+            _currentTheme = _lightTheme;
+        }
 
         
 

@@ -74,3 +74,5 @@ C:\Yurii.Vovchuk\GitLocal\mudblazorserver1\obj\Debug\net6.0\scopedcss\projectbun
 C:\Yurii.Vovchuk\GitLocal\mudblazorserver1\obj\Debug\net6.0\mudblazorserver1.csproj.CopyComplete
 C:\Yurii.Vovchuk\GitLocal\mudblazorserver1\obj\Debug\net6.0\mudblazorserver1.genruntimeconfig.cache
 C:\Yurii.Vovchuk\GitLocal\mudblazorserver1\obj\Debug\net6.0\ref\mudblazorserver1.dll
+C:\Yurii.Vovchuk\GitLocal\mudblazorserver1\obj\Debug\net6.0\scopedcss\Pages\Components\DialogAddItem.razor.rz.scp.css
+C:\Yurii.Vovchuk\GitLocal\mudblazorserver1\obj\Debug\net6.0\scopedcss\Pages\Text.razor.rz.scp.css

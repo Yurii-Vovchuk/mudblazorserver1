@@ -16,10 +16,7 @@
         <MudSpacer />
         <MudSpacer />
 
-        <Cart 
-            SetGoodCount="@SetCount"
-            ItemCount = "@count"
-        />
+        <Cart />
         
         <MudAvatar Color="Color.Secondary" Class="ml-6">YV</MudAvatar>
         @* <MudIconButton Icon="@Icons.Material.Filled.MoreVert" Color="Color.Inherit" Edge="Edge.End" /> *@
@@ -30,7 +27,7 @@
     <MudDrawer @bind-Open="_drawerOpen" ClipMode="DrawerClipMode.Always"  >
         <NavMenu/>
     </MudDrawer>
-    <MudMainContent Class="mt-4 pl-12 pr-12">
+    <MudMainContent Class="mt-4 px-8">
         @Body
     </MudMainContent>
 </MudLayout>
@@ -38,14 +35,7 @@
 
 @code {
 
-    private int count = 0;
-    private void SetCount()
-    {
-        count++;
-    }
-
-
-
+   
 
 
     bool themeOn = true;
