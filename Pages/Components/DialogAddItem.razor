@@ -15,7 +15,7 @@
                         @bind-Value="model.Text" 
                         @oninput="@(()=>ActivateButton())"
                         For="@(() => model.Text)"/>
-                    <MudRating MaxValue="5" @bind-SelectedValue="model.Range" Class="mt-4"/>
+                    <MudRating MaxValue="5" Class="mt-4" @bind-SelectedValue="@reangeValue" />
                 </MudContainer>
             </MudGrid>
         </EditForm>
@@ -29,19 +29,21 @@
             OnClick="Submit"
             >Add</MudButton>
     </DialogActions>
-</MudDialog>
 
+</MudDialog>
+    <div>@((RangeEnum)reangeValue)</div>
 
 @code {
+
     [CascadingParameter] 
     MudDialogInstance MudDialog { get; set; }
     CardModel model = new CardModel();
-
+    int reangeValue = 0;
+ 
     
     private bool ActivateButton()
     {
         return (model.Title != "" && model.Title.Length <= 8) && model.Text != "";
-       
     } 
 
 

@@ -1,8 +1,9 @@
 @inject CounterModel CounterModel
 
-<MudItem Class="mt-2">
-  <MudIcon  Icon="@Icons.Filled.ShoppingCartCheckout"  Class="cursor-pointer" Style="font-size: 2rem;"/>
-  <MudChip Class="mt-n5">@CounterModel.Counter</MudChip>
+<MudItem Class="mt-7 ">
+  <MudBadge Class="mt-n5" Content="@CounterModel.Counter" Color="Color.Primary" Overlap="true" >
+    <MudIcon  Icon="@Icons.Filled.ShoppingCartCheckout"  Class="cursor-pointer" Style="font-size: 2rem;"/>
+  </MudBadge>
 </MudItem>
 
 

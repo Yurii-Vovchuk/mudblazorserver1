@@ -1,9 +1,19 @@
-@inject CounterModel CounterModel
 
-
+@* <MudRating SelectedValue="@Card.Range" MaxValue="5" Disabled="@(!IsChecked ? true : false)"/> *@
+<MudRating MaxValue="5" Disabled="@(!IsChecked ? true : false)" SelectedValue = "@Rating"/>
 
  
 @code {
+  public CardModel Card { get; set; }
+  Random rnd = new Random();
+
+
+  [Parameter]
+  public bool IsChecked { get; set; }
+  [Parameter]
+  public int Rating { get; set; }
+  
+
 
  
 

@@ -2,8 +2,6 @@
 @inject IDialogService DialogService
 
 
-
-
 @* <MudThemeProvider @bind-IsDarkMode="@themeOn"/> *@
 <MudThemeProvider Theme="@_currentTheme"/>
 <MudDialogProvider />
@@ -18,7 +16,7 @@
 
         <Cart />
         
-        <MudAvatar Color="Color.Secondary" Class="ml-6">YV</MudAvatar>
+        <MudAvatar Color="Color.Secondary" Class="ml-9">YV</MudAvatar>
         @* <MudIconButton Icon="@Icons.Material.Filled.MoreVert" Color="Color.Inherit" Edge="Edge.End" /> *@
         <MudAvatar Color="Color.Secondary" Class="ml-2">
             <MudIconButton Icon="@themIcon"  OnClick="ChangeThemeAsync"/>

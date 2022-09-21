@@ -13,7 +13,9 @@
         <MudItem Class="mb-5">@Card.Text</MudItem>
       </MudItem>
       <MudItem Class="d-flex justify-space-between align-end flex-wrap"> 
-        <MudRating SelectedValue="@Card.Range" MaxValue="5" Disabled="@(!IsChecked ? true : false)"/>
+        @* <MudRating SelectedValue="@Card.Range" MaxValue="5" Disabled="@(!IsChecked ? true : false)"/> *@
+       <Range IsChecked=IsChecked Rating="@Card.Range"/>
+       <MudText></MudText>
         <MudSpacer />
         <MudButtonGroup Variant="Variant.Outlined" >
           <MudButton Color="Color.Primary" Variant="Variant.Outlined" @onclick="(()=>Decrement())">
@@ -41,6 +43,7 @@
   
   [Parameter]
   public CardModel Card { get; set; }
+
 
 
   private Task ChangeCount(int count)

@@ -1,5 +1,25 @@
 @page "/text"
+
+<MudStack Justify="Justify.FlexEnd" Row="true" Spacing="1" AlignItems="AlignItems.End" 
+  Style=" background-color: #999999;
+          width: 600px;
+          padding: 10px;
+
+        "
+>
+  <MudIconButton  
+    Icon="@Icons.Filled.PlaylistRemove" Edge="Edge.End" Size="Size.Small"     Variant="Variant.Text" Title="remove all apps" />
+  <MudIconButton 
+    Icon="@Icons.Filled.ColorLens" Edge="Edge.End" Size="Size.Small" Variant="Variant.Text" Title="change background" />
+</MudStack>
+
+
+
+
 <MudText Typo="Typo.h3">Styling text</MudText>
+<SvgHolder>
+  <SvgSample />
+</SvgHolder>
 
 <MudText
   style="
@@ -10,6 +30,8 @@
 >
   Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quas dolorem aspernatur id minima, praesentium  nulla adipisci numquam officiis ipsa autem consequuntur harum odio quam possimus alias sit mollitia accusamus?
 </MudText>
+
+
 <br>
 <MudButton Variant="Variant.Filled" Color="Color.Primary"
   Style="color: orange; background: #222222; font-size: 12px"

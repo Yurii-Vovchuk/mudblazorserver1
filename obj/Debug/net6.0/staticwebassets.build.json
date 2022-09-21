@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "rE+UKPoUZNH/Ua5QtxI14+tvFLe18ivV0KmE7SBH4Hk=",
+  "Hash": "LlOdks958zp1wZyevYi0Dp1tJjax7ScrFkwhNmJOBR0=",
   "Source": "mudblazorserver1",
   "BasePath": "_content/mudblazorserver1",
   "Mode": "Default",
@@ -134,6 +134,40 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
+    },
+    {
+      "Identity": "C:\\Yurii.Vovchuk\\GitLocal\\mudblazorserver1\\wwwroot\\Images\\IPhone_13_vector.svg",
+      "SourceId": "mudblazorserver1",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Yurii.Vovchuk\\GitLocal\\mudblazorserver1\\wwwroot\\",
+      "BasePath": "_content/mudblazorserver1",
+      "RelativePath": "Images/IPhone_13_vector.svg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Images\\IPhone_13_vector.svg"
+    },
+    {
+      "Identity": "C:\\Yurii.Vovchuk\\GitLocal\\mudblazorserver1\\wwwroot\\Images\\Smartphone_icon.svg",
+      "SourceId": "mudblazorserver1",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Yurii.Vovchuk\\GitLocal\\mudblazorserver1\\wwwroot\\",
+      "BasePath": "_content/mudblazorserver1",
+      "RelativePath": "Images/Smartphone_icon.svg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Images\\Smartphone_icon.svg"
     },
     {
       "Identity": "C:\\Yurii.Vovchuk\\GitLocal\\mudblazorserver1\\wwwroot\\StyleGlobal.css",

@@ -2,7 +2,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace mudblazorserver1.Data
 {
-  public class CardModel
+  public class CardModel : RangeModel
   {
     public Guid Id { get; set; } = Guid.NewGuid();
     [Required]
@@ -12,7 +12,7 @@ namespace mudblazorserver1.Data
     [StringLength(150, ErrorMessage = "This field should be filled")]
     public string? Text { get; set; }
     public bool IsChecked { get; set; } = true;
-    public int Range { get; set; } 
+    // public int Range { get; set; } 
     public int Counter { get; set; }
     
 
